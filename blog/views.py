@@ -10,6 +10,7 @@ class PostList(ListView):
 
 class PostDetail(DetailView):
     model = Post
+
 # def index(request):
 #    posts = Post.objects.all().order_by('-pk')
 
