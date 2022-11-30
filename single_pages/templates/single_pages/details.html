@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-
+{% load static %}
 <html lang="kr">
 <head>
     <meta charset="utf-8">
@@ -39,44 +39,52 @@
             <!-- end of mobile menu toggle button -->
 
     <!-- Navigation -->
-    {% include 'blog/navbar.html' %}
+     {% include 'blog/navbar.html' %}
 
     <!-- Header-->
         <header class="bg-secondary py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">SIGN UP</h1>
+                    <h1 class="display-4 fw-bolder">DETAILS</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">후기와 Q&A를 작성할 수 있는 공간입니다.</p>
                 </div>
             </div>
         </header>
 
-    <!-- Product section-->
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
-                    <div class="col-md-6">
-                        <div class="small mb-1">SKU: BST-498</div>
-                        <h1 class="display-5 fw-bolder">Shop item template</h1>
-                        <div class="fs-5 mb-5">
-                            <span class="text-decoration-line-through">$45.00</span>
-                            <span>$40.00</span>
-                        </div>
-                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
-                        <div class="d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                Add to cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- Details -->
+    <div id="details" class="basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="text-container">
+                        <h2>이제 저희 솔루션을 업그레이드 하세요</h2>
+                        <p>무료버전은 다양한 서비스를 제공하기 힘듭니다. 업그레이드하셔서 파워풀한 기능을 사용하세요</p>
+                        <ul class="list-unstyled li-space-lg">
+                            <li class="media">
+                                <i class="fas fa-square"></i>
+                                <div class="media-body">고객서비스에 맞는 맞춤형 홈페이지 제작</div>
+                            </li>
+                            <li class="media">
+                                <i class="fas fa-square"></i>
+                                <div class="media-body">다양한 템플릿과 아이디어 제공</div>
+                            </li>
+                        </ul>
+                        <a class="btn-solid-reg page-scroll" href="/sign_up">SIGN UP</a>
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-6">
+                    <div class="image-container">
+                        <img class="img-fluid" src="{% static 'blog/images/details.png' %}" alt="alternative">
+                    </div> <!-- end of image-container -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of details -->
 
     <!-- Footer -->
     {% include 'blog/footer.html' %}
+
 
     <!-- Scripts -->
     <script src="/static/blog/js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->

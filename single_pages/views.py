@@ -35,3 +35,24 @@ def community(request):
         request,
         'single_pages/community.html'
     )
+
+
+def features(request):
+    return render(
+        request,
+        'single_pages/features.html'
+    )
+
+
+def details(request):
+    return render(
+        request,
+        'single_pages/details.html'
+    )
+
+
+def example(request):
+    return render(
+        request,
+        'single_pages/example.html'
+    )

@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="kr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Website Title -->
+    <title>기사단의 홈페이지</title>
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="/static/blog/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/blog/css/fontawesome-all.css" rel="stylesheet">
+    <link href="/static/blog/css/swiper.css" rel="stylesheet">
+	<link href="/static/blog/css/magnific-popup.css" rel="stylesheet">
+	<link href="/static/blog/css/styles.css" rel="stylesheet">
+    <!-- bootstrap4-->
+    <link href="/static/blog/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+	<!-- Favicon  -->
+    <link rel="icon" href="/static/blog/images/k_icon64.png">
+</head>
+<body data-spy="scroll" data-target=".fixed-top">
+
+    <!-- Preloader -->
+	<div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+
+    <!-- end of preloader -->
+
+            <!-- end of mobile menu toggle button -->
+
+    <!-- Navigation -->
+    {% include 'blog/navbar.html' %}
+
+    <!-- Header-->
+        <header class="bg-secondary py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">FEATURES</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">후기와 Q&A를 작성할 수 있는 공간입니다.</p>
+                </div>
+            </div>
+        </header>
+
+    <!-- Features -->
+    <div id="features" class="tabs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="above-heading">FEATURES</div>
+                    <h2 class="h2-heading">마케팅 자동화 서비스</h2>
+                    <p class="p-heading">당신의 홈페이지를 만드는데 드는 시간을 아껴보세요!</p>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <!-- Tabs Links -->
+                    <ul class="nav nav-tabs" id="argoTabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="nav-tab-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true"><i class="fas fa-list"></i>홈페이지 빌드</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="nav-tab-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false"><i class="fas fa-envelope-open-text"></i>켐페인</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="nav-tab-3" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false"><i class="fas fa-chart-bar"></i>자동화툴</a>
+                        </li>
+                    </ul>
+                    <!-- end of tabs links -->
+
+                    <!-- Tabs Content -->
+                    <div class="tab-content" id="argoTabsContent">
+
+                        <!-- Tab -->
+                        <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab-1">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="image-container">
+                                        <img class="img-fluid" src="{% static 'blog/images/features-1.png' %}" alt="alternative">
+                                    </div> <!-- end of image-container -->
+                                </div> <!-- end of col -->
+                                <div class="col-lg-6">
+                                    <div class="text-container">
+                                        <h3>타 사이트에 비해 더 쉬워졌습니다.</h3>
+                                        <p>쉽게 기사단의 홈페이지에서 제작이 가능합니다. 저희에게 보내주세요 <a class="blue page-scroll" href="sign-up.html">Sign Up Form</a> 24시간 실시간 대기중입니다.</p>
+                                        <ul class="list-unstyled li-space-lg">
+                                            <li class="media">
+                                                <i class="fas fa-square"></i>
+                                                <div class="media-body">Create and embed on websites newsletter sign up forms</div>
+                                            </li>
+                                            <li class="media">
+                                                <i class="fas fa-square"></i>
+                                                <div class="media-body">Manage forms and landing pages for your services</div>
+                                            </li>
+                                            <li class="media">
+                                                <i class="fas fa-square"></i>
+                                                <div class="media-body">Add and remove subscribers using the control panel</div>
+                                            </li>
+                                        </ul>
+                                        <a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-1">LIGHTBOX</a>
+                                    </div> <!-- end of text-container -->
+                                </div> <!-- end of col -->
+                            </div> <!-- end of row -->
+                        </div> <!-- end of tab-pane -->
+                        <!-- end of tab -->
+
+                        <!-- Tab -->
+                        <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab-2">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="image-container">
+                                        <img class="img-fluid" src="{% static 'blog/images/features-2.png' %}" alt="alternative">
+                                    </div> <!-- end of image-container -->
+                                </div> <!-- end of col -->
+                                <div class="col-lg-6">
+                                    <div class="text-container">
+                                        <h3>켐페인 트래커</h3>
+                                        <p>켐페인 모니터링을 제공하여 트래킹이 가능한 홈페이지를 구축할 수 있습니다.</p>
+                                        <ul class="list-unstyled li-space-lg">
+                                            <li class="media">
+                                                <i class="fas fa-square"></i>
+                                                <div class="media-body">Easily plan campaigns and schedule their starting date</div>
+                                            </li>
+                                            <li class="media">
+                                                <i class="fas fa-square"></i>
+                                                <div class="media-body">Start campaigns and follow their evolution closely</div>
+                                            </li>
+                                            <li class="media">
+                                                <i class="fas fa-square"></i>
+                                                <div class="media-body">Evaluate campaign results and optimize future actions</div>
+                                            </li>
+                                        </ul>
+                                        <a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-2">LIGHTBOX</a>
+                                    </div> <!-- end of text-container -->
+                                </div> <!-- end of col -->
+                            </div> <!-- end of row -->
+                        </div> <!-- end of tab-pane -->
+                        <!-- end of tab -->
+
+                        <!-- Tab -->
+                        <div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="tab-3">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="image-container">
+                                        <img class="img-fluid" src="{% static 'blog/images/features-3.png' %}" alt="alternative">
+                                    </div> <!-- end of image-container -->
+                                </div> <!-- end of col -->
+                                <div class="col-lg-6">
+                                    <div class="text-container">
+                                        <h3>자동화 툴</h3>
+                                        <p>자동화 툴을 제공하여 홈페이지를 자동으로 구축해주며 편한 서비스를 제공합니다.</p>
+                                        <ul class="list-unstyled li-space-lg">
+                                            <li class="media">
+                                                <i class="fas fa-square"></i>
+                                                <div class="media-body">If you set it up correctly you will get acces to great intel</div>
+                                            </li>
+                                            <li class="media">
+                                                <i class="fas fa-square"></i>
+                                                <div class="media-body">Easy to integrate in your websites and landing pages</div>
+                                            </li>
+                                            <li class="media">
+                                                <i class="fas fa-square"></i>
+                                                <div class="media-body">The generated reports are important for your strategy</div>
+                                            </li>
+                                        </ul>
+                                        <a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-3">LIGHTBOX</a>
+                                    </div> <!-- end of text-container -->
+                                </div> <!-- end of col -->
+                            </div> <!-- end of row -->
+                        </div> <!-- end of tab-pane -->
+                        <!-- end of tab -->
+
+                    </div> <!-- end of tab content -->
+                    <!-- end of tabs content -->
+
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of tabs -->
+    <!-- end of features -->
+
+
+    <!-- Details Lightboxes -->
+    <!-- Details Lightbox 1 -->
+	<div id="details-lightbox-1" class="lightbox-basic zoom-anim-dialog mfp-hide">
+        <div class="container">
+            <div class="row">
+                <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                <div class="col-lg-8">
+                    <div class="image-container">
+                        <img class="img-fluid" src="{% static 'blog/images/details-lightbox.png' %}" alt="alternative">
+                    </div> <!-- end of image-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-4">
+                    <h3>List Building</h3>
+                    <hr>
+                    <h5>Core service</h5>
+                    <p>It's very easy to start using Tivo. You just need to fill out and submit the Sign-Up Form and you will receive access to the app.</p>
+                    <ul class="list-unstyled li-space-lg">
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">List building framework</div>
+                        </li>
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">Easy database browsing</div>
+                        </li>
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">User administration</div>
+                        </li>
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">Automate user signup</div>
+                        </li>
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">Quick formatting tools</div>
+                        </li>
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">Fast email checking</div>
+                        </li>
+                    </ul>
+                    <a class="btn-solid-reg mfp-close" href="sign-up.html">SIGN UP</a> <a class="btn-outline-reg mfp-close as-button" href="#screenshots">BACK</a>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of lightbox-basic -->
+    <!-- end of details lightbox 1 -->
+
+    <!-- Details Lightbox 2 -->
+	<div id="details-lightbox-2" class="lightbox-basic zoom-anim-dialog mfp-hide">
+        <div class="container">
+            <div class="row">
+                <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                <div class="col-lg-8">
+                    <div class="image-container">
+                        <img class="img-fluid" src="{% static 'blog/images/details-lightbox.png' %}" alt="alternative">
+                    </div> <!-- end of image-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-4">
+                    <h3>Campaign Monitoring</h3>
+                    <hr>
+                    <h5>Core service</h5>
+                    <p>It's very easy to start using Tivo. You just need to fill out and submit the Sign-Up Form and you will receive access to the app.</p>
+                    <ul class="list-unstyled li-space-lg">
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">List building framework</div>
+                        </li>
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">Easy database browsing</div>
+                        </li>
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">User administration</div>
+                        </li>
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">Automate user signup</div>
+                        </li>
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">Quick formatting tools</div>
+                        </li>
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">Fast email checking</div>
+                        </li>
+                    </ul>
+                    <a class="btn-solid-reg mfp-close" href="sign-up.html">SIGN UP</a> <a class="btn-outline-reg mfp-close as-button" href="#screenshots">BACK</a>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of lightbox-basic -->
+    <!-- end of details lightbox 2 -->
+
+    <!-- Details Lightbox 3 -->
+	<div id="details-lightbox-3" class="lightbox-basic zoom-anim-dialog mfp-hide">
+        <div class="container">
+            <div class="row">
+                <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
+                <div class="col-lg-8">
+                    <div class="image-container">
+                        <img class="img-fluid" src="{% static 'blog/images/details-lightbox.png' %}" alt="alternative">
+                    </div> <!-- end of image-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-4">
+                    <h3>Analytics Tools</h3>
+                    <hr>
+                    <h5>Core service</h5>
+                    <p>It's very easy to start using Tivo. You just need to fill out and submit the Sign-Up Form and you will receive access to the app.</p>
+                    <ul class="list-unstyled li-space-lg">
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">List building framework</div>
+                        </li>
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">Easy database browsing</div>
+                        </li>
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">User administration</div>
+                        </li>
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">Automate user signup</div>
+                        </li>
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">Quick formatting tools</div>
+                        </li>
+                        <li class="media">
+                            <i class="fas fa-square"></i><div class="media-body">Fast email checking</div>
+                        </li>
+                    </ul>
+                    <a class="btn-solid-reg mfp-close" href="sign-up.html">SIGN UP</a> <a class="btn-outline-reg mfp-close as-button" href="#screenshots">BACK</a>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of lightbox-basic -->
+    <!-- end of details lightbox 3 -->
+    <!-- end of details lightboxes -->
+
+
+    <!-- Footer -->
+    {% include 'blog/footer.html' %}
+
+
+    <!-- Scripts -->
+    <script src="/static/blog/js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="/static/blog/js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+    <script src="/static/blog/js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="/static/blog/js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="/static/blog/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="/static/blog/js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="/static/blog/js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+    <script src="/static/blog/js/scripts.js"></script> <!-- Custom scripts -->
+    <!-- jsDeliver-->
+
+</body>
+</html>
