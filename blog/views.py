@@ -1,15 +1,20 @@
-
-# from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
 
 
 class PostList(ListView):
     model = Post
     ordering = '-pk'
+    paginate_by = 5
+
 
 class PostDetail(DetailView):
     model = Post
+
+
+class PostCreate(CreateView):
+    model = Post
+    fields = ['title', 'hook_text', 'content', 'head_image', 'file_upload', 'category']
 
 # def index(request):
 #    posts = Post.objects.all().order_by('-pk')

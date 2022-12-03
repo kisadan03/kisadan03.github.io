@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 
+
 # Create your views here.
 def landing(request):
     return render(
@@ -55,4 +56,11 @@ def example(request):
     return render(
         request,
         'single_pages/example.html'
+    )
+
+
+def about_me_detail(request):
+    return render(
+        request,
+        'single_pages/about_me_detail.html'
     )

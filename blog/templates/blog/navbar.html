@@ -26,6 +26,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/details">DETAILS</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/example">EXAMPLE</a>
+                    </li>
 
                     <!-- Dropdown Menu -->
                     <li class="nav-item dropdown">
@@ -43,8 +46,22 @@
                     </li>
                 </ul>
                 <span class="nav-item">
-                    <a class="btn-outline-sm" href="log-in.html">LOG IN</a>
+                    <a class="btn-outline-sm" href="/sign_up">LOG IN</a>
                 </span>
+
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ user.username | upper }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/accounts/logout/">Log Out</a>
+                        </div>
+                    </li>
+                    {% endif %}
+                </ul>
             </div>
         </div> <!-- end of container -->
     </nav> <!-- end of navbar -->
