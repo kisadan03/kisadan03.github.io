@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
 {% load static %}
-<html lang="kr">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Website Title -->
-    <title>기사단의 홈페이지</title>
+    <title>REVIEW</title>
 
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap&subset=latin-ext" rel="stylesheet">
@@ -67,9 +67,7 @@
                                         </div>
                                         <!-- Post Content -->
                                         <div class="post-content">
-                                            <a href="{{ p.get_absolute_url }}" class="headline">
-                                                <h2 class="card-title">{{ p.title }}</h2>
-                                            </a>
+                                        <h2><a href="{{ p.get_absolute_url }}" class="headline">{{ p.title }}</a></h2>
                                                 <p class="card-text">{{ p.content | truncatewords:20 }}</p>
                                             <!-- Post Meta -->
                                             <div class="post-meta">
@@ -117,7 +115,6 @@
 
     <!-- Footer -->
     {% include 'blog/footer.html' %}
-
 
     <!-- Scripts -->
     <script src="/static/blog/js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
