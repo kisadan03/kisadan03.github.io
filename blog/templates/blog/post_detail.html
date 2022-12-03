@@ -1,67 +1,12 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="ko">
+      {% extends 'blog/base.html' %}
+      {% load crispy_forms_tags %}
 
-<head>
+      {% block head_title %}
+          {{ post.title }} - REVIEW
+      {% endblock %}
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>{{ post.title }} - Blog</title>
-
-   <!-- Styles -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap&subset=latin-ext" rel="stylesheet">
-    <link href="/static/blog/css/bootstrap.css" rel="stylesheet">
-    <link href="/static/blog/css/fontawesome-all.css" rel="stylesheet">
-    <link href="/static/blog/css/swiper.css" rel="stylesheet">
-	<link href="/static/blog/css/magnific-popup.css" rel="stylesheet">
-	<link href="/static/blog/css/styles.css" rel="stylesheet">
-    <!-- bootstrap4-->
-    <link href="{% static 'blog/bootstrap/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="{% static 'blog/css/blog-post.css' %}" media="screen">
-
-	<!-- Favicon  -->
-    <link rel="icon" href="/static/blog/images/k_icon64.png">
-</head>
-
-
-<body data-spy="scroll" data-target=".fixed-top">
-
-    <!-- Preloader -->
-	<div class="spinner-wrapper">
-        <div class="spinner">
-            <div class="bounce1"></div>
-            <div class="bounce2"></div>
-            <div class="bounce3"></div>
-        </div>
-    </div>
-
-    <!-- end of preloader -->
-
-            <!-- end of mobile menu toggle button -->
-
-  <!-- Navigation -->
-    {% include 'blog/navbar.html' %}
-
-  <!-- Header-->
-        <header class="bg-secondary py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">REVIEW</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">리뷰를 작성할 수 있는 공간입니다.</p>
-                </div>
-            </div>
-        </header>
-
-  <!-- Page Content -->
-  <div class="container">
-
-    <div class="row">
-
+      {% block main_area %}
+      <div id="post-area">
       <!-- Post Content Column -->
       <div class="col-lg-12">
 
@@ -76,6 +21,11 @@
 
         <hr>
 
+        {% if user.is_authenticated and user == post.author %}
+            <a class="btn btn-info btn-sm float-right" href="/review/update_post/{{ post.pk }}/" role="button">
+              <i class="fas fa-pen"></i> Edit Post</a>
+        {% endif %}
+
         <!-- Date/Time -->
         <p>{{ post.created_at }}</p>
 
@@ -89,26 +39,34 @@
         {% endif %}
 
         <hr>
+      </div>
 
+        <div id="comment-area">
         <!-- Post Content -->
-        <p>{{ post.content }}</p>
+        <p>{{ post.get_content_markdown | safe }}</p>
         <hr>
 
         <!-- Comments Form -->
         <div class="card my-4">
           <h5 class="card-header">Leave a Comment:</h5>
           <div class="card-body">
-            <form>
+            {% if user.is_authenticated %}
+            <form id="comment-form" method="POST" action="{{ post.get_absolute_url }} new_comment/">
+              {% csrf_token %}
               <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
+                {{ comment_form | crispy }}
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            {% else %}
+                 <a role="button" class="btn btn-outline-dark btn-block btn-sm" href="/sign_up/" data-toggle="modal" data-target="/sign_up">
+                   Log in and leave a comment</a>
+            {% endif %}
           </div>
         </div>
 
         {% if post.comment_set.exists %}
-        {% for comment in post.comment_set.iterator %}
+            {% for comment in post.comment_set.iterator %}
         <!-- Single Comment -->
         <div class="media mb-4" id="comment-{{ comment.pk }}">
           <img class="d-flex mr-3 rounded-circle" src="https://via.placeholder.com/50x50" alt="">
@@ -117,9 +75,8 @@
             <p>{{ comment.content | linebreaks }}</p>
           </div>
         </div>
-        {% endfor %}
+             {% endfor %}
         {% endif %}
-
         <hr/>
 
         <!-- Comment with nested comments -->
@@ -150,28 +107,8 @@
 
       </div>
 
-    </div>
-    <!-- /.row -->
-
-  </div>
-
-{% include 'blog/footer.html' %}
-
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
-    <!-- Scripts -->
-    <script src="/static/blog/js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
-    <script src="/static/blog/js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
-    <script src="/static/blog/js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
-    <script src="/static/blog/js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
-    <script src="/static/blog/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
-    <script src="/static/blog/js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
-    <script src="/static/blog/js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
-    <script src="/static/blog/js/scripts.js"></script> <!-- Custom scripts -->
-    <!-- jsDeliver-->
-
-</body>
-</html>
+      </div>
+      {% endblock %}
