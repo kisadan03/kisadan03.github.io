@@ -48,14 +48,6 @@ def features(request):
         'single_pages/features.html'
     )
 
-
-def details(request):
-    return render(
-        request,
-        'single_pages/details.html'
-    )
-
-
 def example(request):
     return render(
         request,
