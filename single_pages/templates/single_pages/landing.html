@@ -38,27 +38,6 @@
     <!-- Navigation -->
     {% include 'blog/navbar.html' %}
 
-
-<!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="loginModalLabel">Log In</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
     <!-- Header -->
     <header id="header" class="header">
         <div class="header-content">
@@ -687,13 +666,14 @@
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="form-control-submit-button">전송하기</button>
+                                <button type="submit" class="form-control-submit-button" data-toggle="modal" data-target="submitModal">전송하기</button>
                             </div>
                             <div class="form-message">
                                 <div id="nmsgSubmit" class="h3 text-center hidden"></div>
                             </div>
                         </form>
                         <!-- end of newsletter form -->
+
 
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->

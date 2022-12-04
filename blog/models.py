@@ -24,6 +24,15 @@ class Post(models.Model):
     def get_content_markdown(self):
         return markdown(self.content)
 
+    def get_avatar_url(self):
+        if self.author is not None:
+            if self.author.socialaccount_set.exists():
+                return self.author.socialaccount_set.first().get_avatar_url()
+            else:
+                return f'https://avatars.dicebear.com/api/human/{self.author.email}.svg'
+        else:
+            return 'http://placehold.it/50X50'
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
@@ -37,3 +46,4 @@ class Comment(models.Model):
 
     def get_absolute_url(self):
         return f'{self.post.get_absolute_url()}#comment-{self.pk}'
+

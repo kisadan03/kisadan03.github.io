@@ -1,7 +1,6 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
-from .forms import CommentForm
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import PermissionDenied
@@ -18,7 +17,6 @@ class PostDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(PostDetail, self).get_context_data()
-        context['comment_form'] = CommentForm
         return context
 
 

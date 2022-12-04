@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from blog.models import Post
 
 
 # Create your views here.
@@ -31,9 +32,13 @@ def sign_up(request):
 
 
 def community(request):
+    recent_posts = Post.objects.order_by('-pk')[:5]
     return render(
         request,
-        'single_pages/community.html'
+        'single_pages/community.html',
+        {
+            'recent_posts': recent_posts,
+        }
     )
 
 
@@ -55,4 +60,11 @@ def example(request):
     return render(
         request,
         'single_pages/example.html'
+    )
+
+
+def exampleview(request):
+    return render(
+        request,
+        'single_pages/exampleview.html'
     )

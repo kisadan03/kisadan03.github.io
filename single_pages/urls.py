@@ -10,4 +10,5 @@ urlpatterns = [
     path('features', views.features),
     path('details', views.details),
     path('example', views.example),
+    path('view', views.exampleview),
 ]
