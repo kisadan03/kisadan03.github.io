@@ -3,8 +3,7 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from .forms import CommentForm
-from .models import Post, Comment
+from .models import Post
 
 
 class PostList(ListView):
@@ -18,32 +17,13 @@ class PostDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(PostDetail, self).get_context_data()
-        context['comment_form'] = CommentForm
         return context
-
-
-def new_comment(request, pk):
-    if request.user.is_authenticated:
-        post = get_object_or_404(Post, pk=pk)
-
-        if request.method == 'POST':
-            comment_form = CommentForm(request.POST)
-            if comment_form.is_valid():
-                comment = comment_form.save(commit=False)
-                comment.post = post
-                comment.author = request.user
-                comment.save()
-                return redirect(comment.get_absolute_url())
-        else:
-            return redirect(post.get_absolute_url())
-    else:
-        raise PermissionDenied
 
 
 def delete_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    post = post.post
-    if request.user.is_authenticated and request.user == post.author:
+    post = post.delete()
+    if request.user.is_authenticated and request.user == Post.author:
         post.delete()
         return redirect(post.get_absolute_url())
     else:
@@ -72,17 +52,6 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated and request.user == self.get_object().author:
             return super(PostUpdate, self).dispatch(request, *args, **kwargs)
-        else:
-            raise PermissionDenied
-
-
-class CommentUpdate(LoginRequiredMixin, UpdateView):
-    model = Comment
-    form_class = CommentForm
-
-    def dispatch(self, request, *args, **kwargs):
-        if request.user.is_authenticated and not request.user == self.get_object().author:
-            return super(CommentUpdate, self).dispatch(request, *args, **kwargs)
         else:
             raise PermissionDenied
 

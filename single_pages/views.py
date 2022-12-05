@@ -41,11 +41,13 @@ def features(request):
         'single_pages/features.html'
     )
 
+
 def example(request):
     return render(
         request,
         'single_pages/example.html'
     )
+
 
 def mypage(request):
     return render(

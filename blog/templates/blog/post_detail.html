@@ -22,25 +22,25 @@
 
         <hr>
 
-        {% if user.is_authenticated and user == post.author %}
+        {% if user.is_authenticated and post.author == user %}
           <div class="float-right">
-            <a class="btn btn-info btn-sm float-right" href="/review/update_post/{{ post.pk }}/" role="button">
+            <a class="btn btn-info btn-sm" href="/review/update_post/{{ post.pk }}/" role="button">
               <i class="fas fa-pen"></i> Edit Post</a>
           <a role="button"
                href="#"
                  id="post-{{ post.pk }}-delete-modal-btn"
-                 class="btn btn-sm btn-danger"
-                 data-toggle="modal" data-target="#delExchangeModal-{{ post.pk }}" class="mr-2 text-danger text-decoration-none"> delete
+                 class="delete btn btn-sm btn-danger"
+                 data-toggle="modal" data-target="#deletePostModal-{{ post.pk }}"> delete
           </a>
               </div>
 
           <!--Modal -->
-          <div class="modal fade" id="delExchangeModal-{{ post.pk }}" tabindex="-1"
-               role="dialog" aria-labelledby="delExchangeModalLabel" aria-hidden="true">
+          <div class="modal fade" id="deletePostModal-{{ post.pk }}" tabindex="-1"
+               role="dialog" aria-labelledby="deletePostModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                   <div class="modal-content">
                       <div class="modal-header">
-                          <h5 class="modal-title" id="delModalLabel">Are You Sure?</h5>
+                          <h5 class="modal-title" id="deleteModalLabel">Are You Sure?</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                           </button>
@@ -50,12 +50,14 @@
                       </div>
                       <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
-                          <a role="button" class="btn btn-danger" href="/review/delete_post/{{ post.pk }}">Delete</a>
+                          <a role="button" class="btn btn-danger" href="/review/delete_post/{{ post.pk }}/">Delete</a>
                       </div>
                   </div>
               </div>
           </div>
         {% endif %}
+
+
 
         <!-- Date/Time -->
         <p>{{ post.created_at }}</p>
@@ -75,27 +77,10 @@
         <div id="comment-area">
         <!-- Post Content -->
         <p>{{ post.get_content_markdown | safe }}</p>
-        <hr>
 
-        <!-- Comments Form -->
-        <div class="card my-4">
-          <h5 class="card-header">Leave a Comment:</h5>
-          <div class="card-body">
-            {% if user.is_authenticated %}
-            <form id="comment-form" method="POST" action="{{ post.get_absolute_url }} new_comment/">
-                {% csrf_token %}
-              <div class="form-group">
-                {{ comment_form | crispy }}
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            {% else %}
-                 <a role="button" class="btn btn-outline-dark btn-block btn-sm" href="/sign_up">
-                   Log in and leave a comment</a>
-            {% endif %}
-          </div>
+        <!-- Single Comment -->
         </div>
-        </div>
+<hr>
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
