@@ -46,3 +46,9 @@ def example(request):
         request,
         'single_pages/example.html'
     )
+
+def mypage(request):
+    return render(
+        request,
+        'single_pages/mypage.html'
+    )

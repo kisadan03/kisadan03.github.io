@@ -8,4 +8,5 @@ urlpatterns = [
     path('community', views.community),
     path('features', views.features),
     path('example', views.example),
+    path('mypage', views.mypage),
 ]
