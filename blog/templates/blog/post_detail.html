@@ -23,8 +23,38 @@
         <hr>
 
         {% if user.is_authenticated and user == post.author %}
+          <div class="float-right">
             <a class="btn btn-info btn-sm float-right" href="/review/update_post/{{ post.pk }}/" role="button">
               <i class="fas fa-pen"></i> Edit Post</a>
+          <a role="button"
+               href="#"
+                 id="post-{{ post.pk }}-delete-modal-btn"
+                 class="btn btn-sm btn-danger"
+                 data-toggle="modal" data-target="#delExchangeModal-{{ post.pk }}" class="mr-2 text-danger text-decoration-none"> delete
+          </a>
+              </div>
+
+          <!--Modal -->
+          <div class="modal fade" id="delExchangeModal-{{ post.pk }}" tabindex="-1"
+               role="dialog" aria-labelledby="delExchangeModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="delModalLabel">Are You Sure?</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                          <del>{{ post | linebreaks }}</del>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
+                          <a role="button" class="btn btn-danger" href="/review/delete_post/{{ post.pk }}">Delete</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
         {% endif %}
 
         <!-- Date/Time -->
@@ -65,64 +95,6 @@
             {% endif %}
           </div>
         </div>
-
-        {% if post.comment_set.exists %}
-            {% for comment in post.comment_set.iterator %}
-
-        <!-- Single Comment -->
-        <div class="media mb-4" id="comment-{{ comment.pk }}">
-          <img class="d-flex mr-3 rounded-circle" src="https://via.placeholder.com/50x50" alt="">
-          <div class="media-body">
-              {% if user.is_authenticated and comment.author == user %}
-                 <div class="float-right">
-                 <a role="button"
-                    class="btn btn-sm btn-info"
-                    id="comment-{{ comment.pk }}-update-btn"
-                    href="/review/update_comment/{{ comment.pk }}/">
-                     edit
-                 </a>
-              <a role="button"
-                 href="#"
-                 id="comment-{{ comment.pk }}-delete-modal-btn"
-                 class="btn btn-sm btn-danger"
-                 data-toggle="modal" data-target="#deleteCommentModal-{{ comment.pk }}">
-                  delete
-              </a>
-                 </div>
-
-              <!-- Modal -->
-              <div class="modal fade" id="deleteCommentModal-{{ comment.pk }}" tabindex="-1" role="dialog"
-                   aria-labelledby="deleteCommentModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                          <div class="modal-header">
-                              <h5 class="modal-title" id="deleteModalLabel">Are You Sure?</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                              </button>
-                          </div>
-                          <div class="modal-body">
-                              <del>{{ comment | linebreaks }}</del>
-                          </div>
-                          <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
-                              <a role="button" class="btn btn-danger" href="/review/delete_comment/{{ comment.pk }}/">Delete</a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              {% endif %}
-
-            <h5 class="mt-0">{{ comment.author.username }} &nbsp;&nbsp; <small class="text-muted">{{ comment.created_at }}</small></h5>
-            <p>{{ comment.content | linebreaks }}</p>
-            {% if comment.created_at != comment.modified_at %}
-              <p class="text-muted float-right"><small>Updated: {{ comment.modified_at }}</small></p>
-            {% endif %}
-          </div>
-        </div>
-             {% endfor %}
-        {% endif %}
-        <hr/>
         </div>
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
