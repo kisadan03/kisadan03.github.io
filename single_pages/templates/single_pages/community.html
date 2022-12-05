@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-
-<html lang="kr">
+{% load static %}
+<html lang="ko">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Website Title -->
@@ -45,14 +45,16 @@
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">COMMUNITY</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">후기와 Q&A를 작성할 수 있는 공간입니다.</p>
+                    <p class="lead fw-normal text-white-50 mb-0">후기를 작성할 수 있는 공간입니다.</p>
                 </div>
             </div>
         </header>
 
-<div class="container py-5">
-   <div class="col-lg-5 mt-5">
+<div class="container py-6">
+   <div class="col-lg-12 mt-12">
+       <div class="text-center">
        <h2 class="text-dark">Review - Recent posts</h2>
+           </div>
        {% for post in recent_posts %}
        <div class="card mt-1">
            <div class="card-body">
@@ -69,6 +71,8 @@
        {% endfor %}
    </div>
 </div>
+
+
     <!-- Footer -->
     {% include 'blog/footer.html' %}
 

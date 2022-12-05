@@ -15,6 +15,7 @@ class Post(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
+
     def __str__(self):
         return f'[{self.pk}]{self.title} :: {self.author}'
 
@@ -46,4 +47,3 @@ class Comment(models.Model):
 
     def get_absolute_url(self):
         return f'{self.post.get_absolute_url()}#comment-{self.pk}'
-

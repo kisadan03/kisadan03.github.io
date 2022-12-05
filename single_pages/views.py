@@ -10,13 +10,6 @@ def landing(request):
     )
 
 
-def about_me(request):
-    return render(
-        request,
-        'single_pages/about_me.html'
-    )
-
-
 def pricing(request):
     return render(
         request,
@@ -52,11 +45,4 @@ def example(request):
     return render(
         request,
         'single_pages/example.html'
-    )
-
-
-def exampleview(request):
-    return render(
-        request,
-        'single_pages/exampleview.html'
     )
