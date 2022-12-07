@@ -22,12 +22,9 @@ class PostDetail(DetailView):
 
 def delete_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    post = post.delete()
-    if request.user.is_authenticated and request.user == Post.author:
+    if post.author == request.user:
         post.delete()
-        return redirect(post.get_absolute_url())
-    else:
-        raise PermissionDenied
+    return redirect('/review')
 
 
 class PostCreate(LoginRequiredMixin, CreateView):
